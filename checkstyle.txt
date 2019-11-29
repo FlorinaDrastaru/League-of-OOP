@@ -1,0 +1,13 @@
+Starting audit...
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Slam.java:4: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Execute.java:4: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Fireblast.java:4: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Deflect.java:4: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Paralysis.java:5: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Ignite.java:4: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/abilities/Backstab.java:5: Using the '.*' form of import should be avoided - heros.*. [AvoidStarImport]
+[ERROR] /home/florina/IdeaProjects/tema2/src/game/Game.java:36:30: Parameter h1 should be final. [FinalParameters]
+[ERROR] /home/florina/IdeaProjects/tema2/src/game/Game.java:36:39: Parameter h2 should be final. [FinalParameters]
+[ERROR] /home/florina/IdeaProjects/tema2/src/main/GameInput.java:26:12: More than 7 parameters (found 9). [ParameterNumber]
+Audit done.
+Checkstyle ends with 10 errors.

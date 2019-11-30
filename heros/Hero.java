@@ -2,6 +2,7 @@ package heros;
 
 
 
+import abilities.Visitor;
 import constants.Constants;
 
 import java.util.LinkedList;
@@ -118,10 +119,7 @@ public class Hero implements Visitable {
 
     }
 
-    @Override
-    public void accept(final Visitor visitor, final int levelNr) {
 
-    }
 
     public final int getHpRise() {
         return hpRise;
@@ -182,5 +180,9 @@ public class Hero implements Visitable {
     }
 
 
+    @Override
+    public void accept(final Visitor visitor, final int levelNr) {
+
+    }
 }
 

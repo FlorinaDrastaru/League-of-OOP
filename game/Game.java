@@ -1,7 +1,6 @@
 package game;
 
-import abilities.Deflect;
-import abilities.Drain;
+import abilities.*;
 import constants.Constants;
 import heros.Hero;
 
@@ -53,6 +52,33 @@ public final class Game {
             if (!h1.getClass().getSimpleName().equals("Wizard")) {
                 h1.accept(deflect, h1.getLevel());
             }
+        }
+
+        if (h1.getClass().getSimpleName().equals("Pyromancer")) {
+            Fireblast fireblast = new Fireblast();
+            Ignite ignite = new Ignite();
+            h2.accept(fireblast, h2.getLevel());
+            h2.accept(ignite, h2.getLevel());
+            h1.applyIgn();
+            if (h1.getApplyIgn() > Constants.ROUND) {
+                h1.setApplyIgn(1);
+            }
+            h1.setGivenDmg(h2.getTakenDmg());
+        }
+
+        if (h1.getClass().getSimpleName().equals("Knight")) {
+            Execute execute = new Execute();
+            Slam slam = new Slam();
+            h2.accept(execute, h2.getLevel());
+            h2.accept(slam, h2.getLevel());
+            h1.setGivenDmg(h2.getTakenDmg());
+        }
+
+        if (h2.getClass().getSimpleName().equals("Knight")) {
+            Execute execute = new Execute();
+            Slam slam = new Slam();
+            h1.accept(execute, h1.getLevel());
+            h1.accept(slam, h1.getLevel());
         }
     }
 }

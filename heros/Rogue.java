@@ -1,6 +1,7 @@
 package heros;
 
 
+import abilities.Visitor;
 
 public final class Rogue extends Hero {
 

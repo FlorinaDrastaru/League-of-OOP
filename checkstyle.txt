@@ -1,6 +1,6 @@
 Starting audit...
-[ERROR] /home/florina/Documents/tema/src/game/Game.java:38:30: Parameter h1 should be final. [FinalParameters]
-[ERROR] /home/florina/Documents/tema/src/game/Game.java:38:39: Parameter h2 should be final. [FinalParameters]
-[ERROR] /home/florina/Documents/tema/src/main/GameInput.java:26:12: More than 7 parameters (found 9). [ParameterNumber]
+[ERROR] /home/florina/Documents/tema/src/game/Game.java:71:30: Parameter h1 should be final. [FinalParameters]
+[ERROR] /home/florina/Documents/tema/src/game/Game.java:71:39: Parameter h2 should be final. [FinalParameters]
+[ERROR] /home/florina/Documents/tema/src/main/GameInput.java:29:12: More than 7 parameters (found 9). [ParameterNumber]
 Audit done.
 Checkstyle ends with 3 errors.

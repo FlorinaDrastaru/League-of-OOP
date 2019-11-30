@@ -35,14 +35,13 @@ public final class Main {
         }
 
         for (int i = 0; i < gameInput.getRounds(); i++) {
+            // Every hero moves on map according to his move
             for (Hero hero : heros) {
                 hero.moveOnMap(hero.getHeroMoves().get(i));
             }
-            for (Hero hero : heros) {
-                if (hero.getHp() < 0) {
-                    break;
-                }
-            }
+
+            // If two heros are in the same place on map(same row and same column),
+            // they have a fight
             for (int j = 0; j < heros.size(); j++) {
                 for (int k = j + 1; k < heros.size(); k++) {
                     Hero hero1 = heros.get(j);
@@ -51,24 +50,14 @@ public final class Main {
                             && hero1.getCol() == hero2.getCol()
                             && hero1.getHp() > 0 && hero2.getHp() > 0) {
                         Game.fight(hero1, hero2);
-                        if (hero1.getHp() < 0) {
-                            hero2.setxp(hero1);
-                        }
-                        if (hero2.getHp() < 0) {
-                            hero1.setxp(hero2);
-                        }
-                        hero1.updateLevel();
-                        hero2.updateLevel();
-                        hero1.setTakenDmg(hero1.getTakenDmg() * (-1));
-                        hero2.setTakenDmg(hero2.getTakenDmg() * (-1));
-                        hero1.setGivenDmg(hero1.getGivenDmg() * (-1));
-                        hero2.setGivenDmg(hero2.getGivenDmg() * (-1));
+                        // At the end of the fight, the specific attributes of the heros are updated
+                        Game.updateHeroFeatures(hero1, hero2);
                     }
                 }
             }
             Game.setRound();
         }
-
+        // I print the final LeaderBoard
         try {
             String mInputPath = args[0];
             String mOutputPath = args[1];
@@ -78,7 +67,7 @@ public final class Main {
                     fs.writeWord(String.valueOf(hero.getClass()
                             .getSimpleName().charAt(0))
                             + " " + hero.getLevel()
-                            + " " + hero.getxp() + " " + hero.getHp()
+                            + " " + hero.getXp() + " " + hero.getHp()
                             + " " + hero.getRow() + " " + hero.getCol());
                 } else {
                     fs.writeWord(String.valueOf(hero.getClass()

@@ -1,12 +1,13 @@
 package heros;
 
-
-
 import abilities.Visitor;
 import constants.Constants;
-
 import java.util.LinkedList;
 
+/**
+ * The class contains all fields that are related to a hero and
+ * implements the methods that he needs.
+ */
 public class Hero implements Visitable {
     private int xp;
     private int level;
@@ -22,6 +23,9 @@ public class Hero implements Visitable {
     private int takenDmg;
     private int givenDmg;
 
+    /**
+     * The fields used by a hero are initialised.
+     */
     Hero(final int hp, final int hpRise) {
         xp = 0;
         level = 0;
@@ -44,12 +48,8 @@ public class Hero implements Visitable {
         return terrain;
     }
 
-    public final int getxp() {
+    public final int getXp() {
         return xp;
-    }
-
-    public final void setxp(final int xpValue) {
-        this.xp = xpValue;
     }
 
     public final int getLevel() {
@@ -60,15 +60,18 @@ public class Hero implements Visitable {
         this.level = level;
     }
 
+    /**
+     * Method the level of the hero if his xp reaches a certain number, given by a formula.
+     */
     public final void updateLevel() {
         int xpLevelUp = Constants.BASE_XP + this.getLevel() * Constants.XP_MULTIPLIER;
-        if (this.getxp() > xpLevelUp) {
+        if (this.getXp() > xpLevelUp) {
             this.level++;
             this.sethp(this.getHp() + this.getHpRise());
         }
     }
 
-    public final void setxp(final Hero hero) {
+    public final void setXp(final Hero hero) {
         int levelDif = this.getLevel() - hero.getLevel();
         xp = xp + Math.max(0, Constants.VALUE - levelDif * Constants.MULTIPLIER);
     }
@@ -97,6 +100,11 @@ public class Hero implements Visitable {
         heroMoves.add(move);
     }
 
+    /**
+     * Method modifies the position of the hero on map by changing
+     * the number of the row or column.
+     * @param move The move a hero has to make
+     */
     public final void moveOnMap(final String move) {
         if (move.equals("_")) {
             setCol(getCol());
@@ -116,19 +124,11 @@ public class Hero implements Visitable {
         if (move.equals("R")) {
             setCol(getCol() + 1);
         }
-
     }
-
-
 
     public final int getHpRise() {
         return hpRise;
     }
-
-    public final void sethpRise(final int hpRiseValue) {
-        this.hpRise = hpRiseValue;
-    }
-
 
     public final int getHp() {
         return hp;
@@ -142,18 +142,9 @@ public class Hero implements Visitable {
         return fullhp;
     }
 
-    public final void setFullhp(final int fullhp) {
-        this.fullhp = fullhp;
-    }
-
-    public final boolean isMobility() {
-        return mobility;
-    }
-
     public final void setMobility(final boolean mobility) {
         this.mobility = mobility;
     }
-
 
     public final int getApplyIgn() {
         return applyIgn;
@@ -179,10 +170,7 @@ public class Hero implements Visitable {
         return givenDmg;
     }
 
-
     @Override
-    public void accept(final Visitor visitor, final int levelNr) {
-
-    }
+    public void accept(final Visitor visitor, final int levelNr) { }
 }
 

@@ -1,5 +1,9 @@
 package heros;
 
+
+/**
+ * The class creates a new hero, according to the String received as parameter.
+ */
 public abstract class HeroFactory {
 
     private static class Hp {

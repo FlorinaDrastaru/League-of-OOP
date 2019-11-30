@@ -11,11 +11,12 @@ import abilities.Slam;
 import constants.Constants;
 import heros.Hero;
 
+/**
+ * The class implements methods related to the game, to a fight
+ * and to the features that a hero has after a fight.
+ */
 public final class Game {
-
-
-    private Game() {
-    }
+    private Game() { }
 
     private static int round = 1;
 
@@ -27,6 +28,11 @@ public final class Game {
         return round;
     }
 
+    /**
+     * The method calculates the damage after applying the critical hit.
+     * @param dmg The initial damage
+     * @return The new damage, after adding the critical bonus
+     */
     public static float addCriticalBonus(final float dmg) {
         float damage = dmg;
         if (Game.getRound() == 1) {
@@ -35,7 +41,36 @@ public final class Game {
         return damage;
     }
 
+    /**
+     * Method updates the xp, the level and restores the values
+     * of the taken and given damage in a fight.
+     * @param hero1 The first hero from a fight
+     * @param hero2 The second hero from a fight
+     */
+    public static void updateHeroFeatures(final Hero hero1, final Hero hero2) {
+        if (hero1.getHp() < 0) {
+            hero2.setXp(hero1);
+        }
+        if (hero2.getHp() < 0) {
+            hero1.setXp(hero2);
+        }
+        hero1.updateLevel();
+        hero2.updateLevel();
+        hero1.setTakenDmg(hero1.getTakenDmg() * (-1));
+        hero2.setTakenDmg(hero2.getTakenDmg() * (-1));
+        hero1.setGivenDmg(hero1.getGivenDmg() * (-1));
+        hero2.setGivenDmg(hero2.getGivenDmg() * (-1));
+    }
+
+    /**
+     * The method implements the fight.
+     * Every player attack the other one with his abilities.
+     * @param h1 The first hero from a fight
+     * @param h2 The second hero from a fight
+     */
     public static void fight(Hero h1, Hero h2) {
+        // Wizard hero has to attack the second one in order to calculate
+        // the damage for Deflect ability
         if (h1.getClass().getSimpleName().equals("Wizard")) {
             Hero h = h1;
             h1 = h2;
@@ -46,6 +81,8 @@ public final class Game {
             Slam slam = new Slam();
             h2.accept(execute, h2.getLevel());
             h2.accept(slam, h2.getLevel());
+            // The damage that a hero takes is the damage that
+            // the other one gives
             h1.setGivenDmg(h2.getTakenDmg());
         }
 
@@ -63,6 +100,8 @@ public final class Game {
             Paralysis paralysis = new Paralysis();
             h2.accept(backstab, h2.getLevel());
             h2.accept(paralysis, h2.getLevel());
+            // The damage that a hero takes is the damage that
+            // the other one gives
             h1.setGivenDmg(h2.getTakenDmg());
         }
 
@@ -75,6 +114,8 @@ public final class Game {
             if (h1.getApplyIgn() > Constants.ROUND) {
                 h1.setApplyIgn(1);
             }
+            // The damage that a hero takes is the damage that
+            // the other one gives
             h1.setGivenDmg(h2.getTakenDmg());
         }
 

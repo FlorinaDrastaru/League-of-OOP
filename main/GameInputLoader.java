@@ -4,7 +4,10 @@ import fileio.FileSystem;
 
 import java.util.LinkedList;
 
-
+/**
+ * The class implements methods that help at reading
+ * from a file and storing the read elements.
+ */
 public final class GameInputLoader {
     private final String mInputPath;
     private final String mOutputPath;

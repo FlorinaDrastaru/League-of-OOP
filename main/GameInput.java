@@ -2,6 +2,9 @@ package main;
 
 import java.util.LinkedList;
 
+/**
+ * The class contains all fields that are related to the game input.
+ */
 public class GameInput {
     private int n, m;
     private int nrRounds;

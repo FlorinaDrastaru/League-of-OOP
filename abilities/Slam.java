@@ -7,6 +7,13 @@ import heros.Pyromancer;
 import heros.Rogue;
 import heros.Wizard;
 
+
+/**
+ * The class implements method 'visit' so it can be applied to all heros.
+ * Every 'visit' method modifies the hp of the type of hero received as
+ * parameter, by applying the damages specific to Slam ability and
+ * the modifiers specific to every hero.
+ */
 public class Slam implements Visitor {
     private static class Damage {
         private static final float ROGUE_BONUS = (float) -0.2;
@@ -15,6 +22,13 @@ public class Slam implements Visitor {
         private static final float WIZARD_BONUS = (float) 0.05;
         private static final int LEVEL_BONUS = 40;
     }
+
+    /**
+     * The method calculates the new damage, after adding the terrain bonus.
+     * @param hero The hero that gives the damage
+     * @param dmg The initial damage
+     * @return The modified damage
+     */
     public final int addTerrainBonus(final Hero hero, final int dmg) {
         int damage = dmg;
         if (hero.getTerrain().equals("L")) {
@@ -23,6 +37,11 @@ public class Slam implements Visitor {
         }
         return damage;
     }
+
+    /**
+     * @param hero The Knight hero that receives the damage
+     * @param level The level of the Knight hero
+     */
     @Override
     public final  void visit(final Knight hero, final int level) {
         int dmg;
@@ -35,6 +54,10 @@ public class Slam implements Visitor {
         hero.setMobility(false);
     }
 
+    /**
+     * @param hero The Wizard hero that receives the damage
+     * @param level The level of the Knight hero
+     */
     @Override
     public final  void visit(final Wizard hero, final int level) {
         int dmg;
@@ -51,6 +74,10 @@ public class Slam implements Visitor {
         hero.setTakenDmg(d);
     }
 
+    /**
+     * @param hero The Rogue hero that receives the damage
+     * @param level The level of the Rogue hero
+     */
     @Override
     public final  void visit(final Rogue hero, final int level) {
         int dmg;
@@ -63,6 +90,10 @@ public class Slam implements Visitor {
         hero.setMobility(false);
     }
 
+    /**
+     * @param hero The Pyromancer hero that receives the damage
+     * @param level The level of the Pyromancer hero
+     */
     @Override
     public final  void visit(final Pyromancer hero, final int level) {
         int dmg;

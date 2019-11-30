@@ -57,6 +57,12 @@ public final class Main {
                         if (hero2.getHp() < 0) {
                             hero1.setxp(hero2);
                         }
+                        hero1.updateLevel();
+                        hero2.updateLevel();
+                        hero1.setTakenDmg(hero1.getTakenDmg() * (-1));
+                        hero2.setTakenDmg(hero2.getTakenDmg() * (-1));
+                        hero1.setGivenDmg(hero1.getGivenDmg() * (-1));
+                        hero2.setGivenDmg(hero2.getGivenDmg() * (-1));
                     }
                 }
             }

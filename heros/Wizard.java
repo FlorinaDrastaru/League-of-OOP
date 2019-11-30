@@ -1,6 +1,8 @@
 package heros;
 
 
+import abilities.Visitor;
+
 public final class Wizard extends Hero {
 
     public Wizard(final int hp, final int hpRise) {

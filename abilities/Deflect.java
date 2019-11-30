@@ -1,7 +1,11 @@
 package abilities;
 
 import constants.Constants;
-import heros.*;
+import heros.Hero;
+import heros.Knight;
+import heros.Pyromancer;
+import heros.Rogue;
+import heros.Wizard;
 
 
 public class Deflect implements Visitor {

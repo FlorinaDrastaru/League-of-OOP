@@ -1,6 +1,13 @@
 package game;
 
-import abilities.*;
+import abilities.Backstab;
+import abilities.Deflect;
+import abilities.Drain;
+import abilities.Execute;
+import abilities.Fireblast;
+import abilities.Ignite;
+import abilities.Paralysis;
+import abilities.Slam;
 import constants.Constants;
 import heros.Hero;
 
@@ -34,6 +41,13 @@ public final class Game {
             h1 = h2;
             h2 = h;
         }
+        if (h1.getClass().getSimpleName().equals("Knight")) {
+            Execute execute = new Execute();
+            Slam slam = new Slam();
+            h2.accept(execute, h2.getLevel());
+            h2.accept(slam, h2.getLevel());
+            h1.setGivenDmg(h2.getTakenDmg());
+        }
 
         if (h1.getClass().getSimpleName().equals("Wizard")) {
             Drain drain = new Drain();
@@ -44,14 +58,12 @@ public final class Game {
             }
         }
 
-
-        if (h2.getClass().getSimpleName().equals("Wizard")) {
-            Drain drain = new Drain();
-            Deflect deflect = new Deflect();
-            h1.accept(drain, h1.getLevel());
-            if (!h1.getClass().getSimpleName().equals("Wizard")) {
-                h1.accept(deflect, h1.getLevel());
-            }
+        if (h1.getClass().getSimpleName().equals("Rogue")) {
+            Backstab backstab = new Backstab();
+            Paralysis paralysis = new Paralysis();
+            h2.accept(backstab, h2.getLevel());
+            h2.accept(paralysis, h2.getLevel());
+            h1.setGivenDmg(h2.getTakenDmg());
         }
 
         if (h1.getClass().getSimpleName().equals("Pyromancer")) {
@@ -66,19 +78,39 @@ public final class Game {
             h1.setGivenDmg(h2.getTakenDmg());
         }
 
-        if (h1.getClass().getSimpleName().equals("Knight")) {
-            Execute execute = new Execute();
-            Slam slam = new Slam();
-            h2.accept(execute, h2.getLevel());
-            h2.accept(slam, h2.getLevel());
-            h1.setGivenDmg(h2.getTakenDmg());
-        }
-
         if (h2.getClass().getSimpleName().equals("Knight")) {
             Execute execute = new Execute();
             Slam slam = new Slam();
             h1.accept(execute, h1.getLevel());
             h1.accept(slam, h1.getLevel());
         }
+
+        if (h2.getClass().getSimpleName().equals("Pyromancer")) {
+            Fireblast fireblast = new Fireblast();
+            Ignite ignite = new Ignite();
+            h1.accept(fireblast, h1.getLevel());
+            h1.accept(ignite, h1.getLevel());
+            h2.applyIgn();
+            if (h2.getApplyIgn() > Constants.ROUND) {
+                h2.setApplyIgn(1);
+            }
+        }
+
+        if (h2.getClass().getSimpleName().equals("Wizard")) {
+            Drain drain = new Drain();
+            Deflect deflect = new Deflect();
+            h1.accept(drain, h1.getLevel());
+            if (!h1.getClass().getSimpleName().equals("Wizard")) {
+                h1.accept(deflect, h1.getLevel());
+            }
+        }
+
+        if (h2.getClass().getSimpleName().equals("Rogue")) {
+            Backstab backstab = new Backstab();
+            Paralysis paralysis = new Paralysis();
+            h1.accept(backstab, h1.getLevel());
+            h1.accept(paralysis, h1.getLevel());
+        }
     }
 }
+

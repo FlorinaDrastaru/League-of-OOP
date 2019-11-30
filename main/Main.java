@@ -1,6 +1,7 @@
 package main;
 
 import fileio.FileSystem;
+import game.Game;
 import heros.Hero;
 import heros.HeroFactory;
 
@@ -49,6 +50,7 @@ public final class Main {
                     if (hero1.getRow() == hero2.getRow()
                             && hero1.getCol() == hero2.getCol()
                             && hero1.getHp() > 0 && hero2.getHp() > 0) {
+                        Game.fight(hero1, hero2);
                         if (hero1.getHp() < 0) {
                             hero2.setxp(hero1);
                         }
@@ -58,7 +60,7 @@ public final class Main {
                     }
                 }
             }
-
+            Game.setRound();
         }
 
         try {

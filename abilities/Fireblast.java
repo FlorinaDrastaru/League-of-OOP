@@ -46,7 +46,8 @@ public class Fireblast implements Visitor {
     public final  void visit(final Knight hero, final int level) {
         int hp;
         int dmg;
-        dmg = Math.round(Constants.FIREBLAST + Damage.KNIGHT_BONUS * Constants.FIREBLAST);
+        dmg = Math.round(Constants.FIREBLAST + Damage.KNIGHT_BONUS * Constants.FIREBLAST
+                        + Damage.LEVEL_BONUS * level);
         dmg = Math.round(addTerrainBonus(hero, dmg));
         hp = hero.getHp() - dmg;
         hero.sethp(hp);
@@ -61,7 +62,8 @@ public class Fireblast implements Visitor {
         int hp;
         float dmg;
         int d;
-        dmg = Math.round(Constants.FIREBLAST + Damage.WIZARD_BONUS * Constants.FIREBLAST);
+        dmg = Math.round(Constants.FIREBLAST + Damage.WIZARD_BONUS * Constants.FIREBLAST
+                        + Damage.LEVEL_BONUS * level);
         d = Constants.FIREBLAST;
         dmg = addTerrainBonus(hero, dmg);
         d = Math.round(addTerrainBonus(hero, d));
@@ -77,7 +79,8 @@ public class Fireblast implements Visitor {
     public final  void visit(final Rogue hero, final int level) {
         int hp;
         int dmg;
-        dmg = Math.round(Constants.FIREBLAST + Damage.ROGUE_BONUS * Constants.FIREBLAST);
+        dmg = Math.round(Constants.FIREBLAST + Damage.ROGUE_BONUS * Constants.FIREBLAST
+                        + Damage.LEVEL_BONUS * level);
         dmg = Math.round(addTerrainBonus(hero, dmg));
         hp = hero.getHp() - dmg;
         hero.sethp(hp);
@@ -91,7 +94,8 @@ public class Fireblast implements Visitor {
     public final  void visit(final Pyromancer hero, final int level) {
         int hp;
         int dmg;
-        dmg = Math.round(Constants.FIREBLAST + Damage.PYRO_BONUS * Constants.FIREBLAST);
+        dmg = Math.round(Constants.FIREBLAST + Damage.PYRO_BONUS * Constants.FIREBLAST
+                            + Damage.LEVEL_BONUS * level);
         dmg = Math.round(addTerrainBonus(hero, dmg));
         hp = hero.getHp() - dmg;
         hero.sethp(hp);

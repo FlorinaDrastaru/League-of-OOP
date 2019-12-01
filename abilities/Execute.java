@@ -48,7 +48,7 @@ public class Execute implements Visitor {
         if (hero.getHp() < hpLimit) {
             hp = 0;
         } else {
-            dmg = Constants.EXECUTE;
+            dmg = Constants.EXECUTE + Damage.LEVEL_BONUS * level;
             dmg = addTerrainBonus(hero, dmg);
             hp = hero.getHp() - dmg;
         }
@@ -68,7 +68,8 @@ public class Execute implements Visitor {
         if (hero.getHp() < hpLimit) {
             hp = 0;
         } else {
-            dmg = Math.round(Constants.EXECUTE + Damage.WIZARD_BONUS * Constants.EXECUTE);
+            dmg = Math.round(Constants.EXECUTE + Damage.WIZARD_BONUS * Constants.EXECUTE
+                            + Damage.LEVEL_BONUS * level);
             d = Constants.EXECUTE;
             dmg = addTerrainBonus(hero, dmg);
             d = addTerrainBonus(hero, d);
@@ -89,7 +90,8 @@ public class Execute implements Visitor {
         if (hero.getHp() < hpLimit) {
             hp = 0;
         } else {
-            dmg = Math.round(Constants.EXECUTE + Damage.ROGUE_BONUS * Constants.EXECUTE);
+            dmg = Math.round(Constants.EXECUTE + Damage.ROGUE_BONUS * Constants.EXECUTE
+                            + Damage.LEVEL_BONUS * level);
             dmg = addTerrainBonus(hero, dmg);
             hp = hero.getHp() - dmg;
         }
@@ -107,7 +109,8 @@ public class Execute implements Visitor {
         if (hero.getHp() < hpLimit) {
             hp = 0;
         } else {
-            dmg = Math.round(Constants.EXECUTE + Damage.PYRO_BONUS * Constants.EXECUTE);
+            dmg = Math.round(Constants.EXECUTE + Damage.PYRO_BONUS * Constants.EXECUTE
+                            + Damage.LEVEL_BONUS * level);
             dmg = addTerrainBonus(hero, dmg);
             hp = hero.getHp() - dmg;
         }

@@ -1,6 +1,7 @@
 package abilities;
 
 import constants.Constants;
+import heros.Hero;
 import heros.Knight;
 import heros.Pyromancer;
 import heros.Rogue;
@@ -24,21 +25,32 @@ public class Drain implements Visitor {
     }
 
     /**
+     * The method calculates the basic hp of Wizard hero.
+     * @param hero The hero whose base hp I calculate
+     * @return The basic hp
+     */
+
+    public final int calcHpBase(final Hero hero) {
+        int hpBase = Math.round(Math.min(Damage.VAL * hero.getFullhp(), hero.getHp()));
+        return hpBase;
+    }
+
+    /**
      * @param hero The Knight hero that receives the damage
      * @param level The level of the Knight hero
      */
 
     @Override
     public final void visit(final Knight hero, final int level) {
-        int hpBase = (int) Math.round(Math.min(Damage.VAL * hero.getFullhp(), hero.getHp()));
         int dmg;
         int hp;
         float procent;
-        procent = Constants.DRAIN + Constants.DRAIN * Damage.KNIGHT_BONUS;
+        procent = Constants.DRAIN + Constants.DRAIN * Damage.KNIGHT_BONUS
+                + Damage.LEVEL_BONUS * level;
         if (hero.getTerrain().equals("D")) {
             procent += procent * Constants.DESERT_BONUS;
         }
-        dmg = Math.round(procent * hpBase);
+        dmg = Math.round(procent * calcHpBase(hero));
         hp = hero.getHp() - dmg;
         hero.sethp(hp);
     }
@@ -49,12 +61,12 @@ public class Drain implements Visitor {
      */
     @Override
     public final void visit(final Wizard hero, final int level) {
-        int hpBase = (int) Math.round(Math.min(Damage.VAL * hero.getFullhp(), hero.getHp()));
         int dmg;
         int hp;
         float procent;
-        procent = Constants.DRAIN + Constants.DRAIN * Damage.WIZARD_BONUS;
-        dmg = Math.round(procent * hpBase);
+        procent = Constants.DRAIN + Constants.DRAIN * Damage.WIZARD_BONUS
+                + Damage.LEVEL_BONUS * level;
+        dmg = Math.round(procent * calcHpBase(hero));
         if (hero.getTerrain().equals("D")) {
             dmg += Math.round(dmg * Constants.DESERT_BONUS);
         }
@@ -67,12 +79,12 @@ public class Drain implements Visitor {
      */
     @Override
     public final void visit(final Rogue hero, final int level) {
-        int hpBase = (int) Math.round(Math.min(Damage.VAL * hero.getFullhp(), hero.getHp()));
         int dmg;
         int hp;
         float procent;
-        procent = Constants.DRAIN + Constants.DRAIN * Damage.ROGUE_BONUS;
-        dmg = Math.round(procent * hpBase);
+        procent = Constants.DRAIN + Constants.DRAIN * Damage.ROGUE_BONUS
+                + Damage.LEVEL_BONUS * level;
+        dmg = Math.round(procent * calcHpBase(hero));
         if (hero.getTerrain().equals("D")) {
             dmg += Math.round(dmg * Constants.DESERT_BONUS);
         }
@@ -85,15 +97,15 @@ public class Drain implements Visitor {
      */
     @Override
     public final void visit(final Pyromancer hero, final int level) {
-        int hpBase = (int) Math.round(Math.min(Damage.VAL * hero.getFullhp(), hero.getHp()));
         int dmg;
         int hp;
         float procent;
-        procent = Constants.DRAIN + Constants.DRAIN * Damage.PYRO_BONUS;
+        procent = Constants.DRAIN + Constants.DRAIN * Damage.PYRO_BONUS
+                + Damage.LEVEL_BONUS * level;
         if (hero.getTerrain().equals("D")) {
             procent += procent * Constants.DESERT_BONUS;
         }
-        dmg = Math.round(procent * hpBase);
+        dmg = Math.round(procent * calcHpBase(hero));
         hp = hero.getHp() - dmg;
         hero.sethp(hp);
     }

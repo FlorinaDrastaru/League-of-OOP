@@ -44,7 +44,7 @@ public class Deflect implements Visitor {
     public final void visit(final Knight hero, final int level) {
         float dmg;
         int hp;
-        dmg = Math.round(Constants.DEFLECT * hero.getGivenDmg());
+        dmg = Math.round(Constants.DEFLECT * hero.getGivenDmg() + Damage.LEVEL_BONUS * level);
         dmg += Math.round(dmg * Damage.KNIGHT_BONUS);
         dmg = addTerrainBonus(hero, dmg);
         hp = hero.getHp() - (int) dmg;
@@ -68,7 +68,7 @@ public class Deflect implements Visitor {
     public final void visit(final Rogue hero, final int level) {
         float dmg;
         int hp;
-        dmg = Math.round(Constants.DEFLECT * hero.getGivenDmg());
+        dmg = Math.round(Constants.DEFLECT * hero.getGivenDmg() + Damage.LEVEL_BONUS * level);
         dmg += Math.round(dmg * Damage.ROGUE_BONUS);
         dmg = addTerrainBonus(hero, dmg);
         hp = hero.getHp() - (int) dmg;

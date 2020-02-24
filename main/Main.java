@@ -29,9 +29,14 @@ public final class Main {
         }
         int nrMoves = gameInput.getRounds() * gameInput.getNrPlayers();
 
-        for (int i = 0; i < nrMoves; i++) {
+        /*for (int i = 0; i < nrMoves; i++) {
             Hero hero = heros.get(i % gameInput.getRounds());
             hero.addMove(gameInput.getMoves().get(i));
+        }*/
+
+        for (int i = 0; i < nrMoves; i++) {
+            int j = i % gameInput.getNrPlayers();
+            heros.get(j).addMove(gameInput.getMoves().get(i));
         }
 
         for (int i = 0; i < gameInput.getRounds(); i++) {

@@ -26,20 +26,32 @@ public final class GameInputLoader {
         LinkedList<Integer> pos1 = new LinkedList<Integer>();
         LinkedList<Integer> pos2 = new LinkedList<Integer>();
         LinkedList<String> moves = new LinkedList<String>();
-        LinkedList<LinkedList<String>> map = new LinkedList<LinkedList<String>>();
-        LinkedList<String> insideMap = new LinkedList<String>();
+        LinkedList<LinkedList<Character>> map = new LinkedList<>();
+        //LinkedList<String> insideMap = new LinkedList<String>();
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
             n = fs.nextInt();
             m = fs.nextInt();
 
 
-            for (int i = 0; i < n; i++) {
+           /* for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
                     insideMap.add(fs.nextWord());
                 }
                 map.add(insideMap);
+            }*/
+
+            for (int i = 0; i < n; i++) {
+                String row = fs.nextWord();
+                LinkedList<Character> insideMap = new LinkedList<>();
+                for (int j = 0; j < m; j++) {
+
+                    insideMap.add(row.charAt(j));
+                }
+                map.add(insideMap);
+                //insideMap.clear();
             }
+
 
             nrPlayers = fs.nextInt();
 
@@ -52,7 +64,7 @@ public final class GameInputLoader {
 
             nrRounds = fs.nextInt();
 
-            for (int i = 0; i < nrPlayers; i++) {
+            for (int i = 0; i < nrRounds; i++) {
                 String str = fs.nextWord();
                 for (int j = 0; j < str.length(); j++) {
                     moves.add(str.substring(j, j + 1));

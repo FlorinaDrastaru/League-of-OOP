@@ -17,7 +17,7 @@ public class Hero implements Visitable {
     private int col;
     private LinkedList<String> heroMoves;
     private int fullhp;
-    private String terrain;
+    private Character terrain;
     private boolean mobility;
     private int applyIgn;
     private int takenDmg;
@@ -40,11 +40,11 @@ public class Hero implements Visitable {
     }
 
 
-    public final void setTerrain(final String terrain) {
+    public final void setTerrain(final Character terrain) {
         this.terrain = terrain;
     }
 
-    public final String getTerrain() {
+    public final Character getTerrain() {
         return terrain;
     }
 

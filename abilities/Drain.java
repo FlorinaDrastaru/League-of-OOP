@@ -77,6 +77,7 @@ public class Drain implements Visitor {
      * @param hero The Rogue hero that receives the damage
      * @param level The level of the Rogue hero
      */
+
     @Override
     public final void visit(final Rogue hero, final int level) {
         int dmg;

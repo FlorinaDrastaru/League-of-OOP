@@ -13,7 +13,7 @@ public class GameInput {
     private LinkedList<Integer> pos1;
     private LinkedList<Integer> pos2;
     private LinkedList<String> moves;
-    private LinkedList<LinkedList<String>> map;
+    private LinkedList<LinkedList<Character>> map;
 
     public GameInput() {
         nrRounds = -1;
@@ -27,7 +27,7 @@ public class GameInput {
     }
 
     public GameInput(final int nrRounds, final int nrPlayers, final LinkedList<String> race,
-                     final int n, final int m, final LinkedList<LinkedList<String>> map,
+                     final int n, final int m, final LinkedList<LinkedList<Character>> map,
                      final LinkedList<Integer> pos1, final LinkedList<Integer> pos2,
                      final LinkedList<String> moves) {
         this.nrRounds = nrRounds;
@@ -57,7 +57,7 @@ public class GameInput {
     public final LinkedList<String> getRace() {
         return race;
     }
-    public final LinkedList<LinkedList<String>> getMap() {
+    public final LinkedList<LinkedList<Character>> getMap() {
         return map;
     }
 
